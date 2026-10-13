@@ -1,21 +1,21 @@
 export const playlist = [
   {
-    title: 'Morning Light',
-    artist: 'Ari Nova',
-    cover: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80',
-    link: 'https://example.com/lagu-1',
+    title: 'Graduation Song',
+    artist: 'Murphy Radio',
+    cover: new URL('../assets/images/music/covergraduationsong.jpg', import.meta.url).href,
+    link: new URL('../assets/images/music/Murphy Radio - Graduation Song (Official Music Video).mp3', import.meta.url).href,
   },
   {
-    title: 'City Pulse',
-    artist: 'Luna Terrace',
-    cover: 'https://images.unsplash.com/photo-1493225457124-cac648726d0a?auto=format&fit=crop&w=800&q=80',
-    link: 'https://example.com/lagu-2',
+    title: 'The Coffeeshop Where We First Met Right at the Corner',
+    artist: 'Hermione',
+    cover: new URL('../assets/images/music/coverlunaksir.jpg', import.meta.url).href,
+    link: new URL('../assets/images/music/The Coffeeshop Where We First Met Right at the Corner.mp3', import.meta.url).href,
   },
   {
     title: 'Night Coding',
     artist: 'Kaira Echo',
-    cover: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80',
-    link: 'https://example.com/lagu-3',
+    cover: new URL('../assets/images/music/covergraduationsong.jpg', import.meta.url).href,
+    link: new URL('../assets/images/music/Murphy Radio - Graduation Song (Official Music Video).mp3', import.meta.url).href,
   },
 ];
 
@@ -50,14 +50,12 @@ export function initPlaylist({ containerSelector }) {
     const artist = document.createElement('p');
     artist.textContent = track.artist;
 
-    const link = document.createElement('a');
-    link.className = 'music-card__link';
-    link.href = track.link;
-    link.target = '_blank';
-    link.rel = 'noreferrer';
-    link.textContent = 'Dengar lagu';
+    const audio = document.createElement('audio');
+    audio.controls = true;
+    audio.preload = 'none';
+    audio.src = track.link;
 
-    content.append(meta, title, artist, link);
+    content.append(meta, title, artist, audio);
     card.append(image, content);
     container.appendChild(card);
   });
